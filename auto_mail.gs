@@ -26,11 +26,4 @@ let newFile = folder.createFile(pdf).getId();
   
 getPlan().getSheetByName('plan1').showSheet();
 
-  MailApp.sendEmail( 
-  { to: y, 
-    subject: z,
-    htmlBody: null, attachments: [pdf],
-    name: w, }
-  )
-
 }
