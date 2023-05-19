@@ -1,7 +1,7 @@
 function getPlan(){
 
   const app = SpreadsheetApp.getActive();
-  return app;
+  return app; 
 
 } function eMail(mail, title, html, doc, text){
   
@@ -12,30 +12,26 @@ function getPlan(){
     attachments: [doc],
     name: text, }
   )
-}
-
-
-
-
-
-function convXlsx() {
+} function convXlsx() {
   
   let drive = DriveApp;
    let destination = drive.getFolderById( your folder id );
     let files = destination.getFiles();
 
   while(files.hasNext()){
-    let file = files.next();
+    let file = files.next(); // delete de older files
       file.setTrashed(true);
   }
 
-  let x = SpreadsheetApp.create("temp_plan"); 
-  let y = getPlan().getSheetByName('plan0');
-        y.copyTo(x).setName('plan0');
-           x.setActiveSheet(x.getSheetByName('Sheet1'), true);
-             x.deleteActiveSheet();
-  let sheetId = x.getId();
-
+  let sheet = SpreadsheetApp.create( select a good name ); 
+    let y = getPlan().getSheetByName( select other name );
+        y.copyTo(sheet).setName( set a name );
+           sheet.setActiveSheet(sheet.getSheetByName('Sheet1'), true);
+             sheet.deleteActiveSheet();
+  
+  // delete the "Sheet1" is necessary to convert a single sheet to xlsx without a blank page
+  
+  let sheetId = sheet.getId();
   let url = "https://docs.google.com/feeds/download/spreadsheets/Export?key=" + sheetId+ "&exportFormat=xlsx";  
   
   let params = {
@@ -44,11 +40,11 @@ function convXlsx() {
     muteHttpExceptions: true };
 
   let blob = UrlFetchApp.fetch(url, params).getBlob();
-      blob.setName("teste - " + Utilities.formatDate(new Date(), "GMT+1", "dd/MM/yyyy") + ".xlsx");
+      blob.setName("test - " + Utilities.formatDate(new Date(), "GMT+1", "dd/MM/yyyy") + ".xlsx");
 
 
-  mail('otaylorferreira78@gmail.com','teste', null, blob, 'teste');
-
+  mail(test@test, test, test, test, test);
+  
   drive.getFileById(sheetId).setTrashed(true);
 
 } 
