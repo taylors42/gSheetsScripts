@@ -10,8 +10,8 @@ function getPlan(){
     subject: title,
     htmlBody: html,
     attachments: [doc],
-    name: text, }
-  )
+    name: text, })
+  
 } function convXlsx() {
   
   let drive = DriveApp;
@@ -43,7 +43,7 @@ function getPlan(){
       blob.setName("test - " + Utilities.formatDate(new Date(), "GMT+1", "dd/MM/yyyy") + ".xlsx");
 
 
-  mail(test@test, test, test, test, test);
+  eMail(test@test, test, test, test, test);
   
   drive.getFileById(sheetId).setTrashed(true);
 
