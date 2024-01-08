@@ -1,8 +1,9 @@
-function mail(email, titulo, documento, mensagem, attachment){
-  MailApp.sendEmail( 
+function mail(email, titulo, documento, mensagem, attachment)
+  {
+    MailApp.sendEmail( 
       { to: email,
         subject: titulo,
         htmlBody: documento, attachments: [attachment],
-        name: mensagem, }
-  )
-}
+        name: mensagem, 
+      })
+  }
